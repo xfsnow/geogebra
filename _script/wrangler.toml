@@ -1,0 +1,14 @@
+# Cloudflare Pages 配置（GeoGebra 手册静态站点）
+#
+# 部署：
+#   npx wrangler pages deploy _doc/scripts/manual/dist --project-name ggb-manual
+#
+# 关键点：Cloudflare Pages 原生支持目录默认首页，
+#   /manual/en/commands/3D_Commands/ 会自动定位到该目录下的 index.htm。
+#   这是 R2 纯对象存储做不到的 —— 全站有 70283 处目录式引用，
+#   所以必须用 Pages（或 R2 + Worker 兜底），不能只靠 R2。
+name = "ggb-manual"
+compatibility_date = "2026-08-28"
+
+# 便于直接 `npx wrangler pages deploy` 不带参数运行
+pages_build_output_dir = "dist"
