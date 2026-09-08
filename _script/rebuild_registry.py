@@ -2,6 +2,12 @@
 """
 重建 RAG 命令索引缓存 backend/data/command_registry.json。
 
+⚠️ 已失效（2026-09-08）
+----------------------
+backend/app/rag/command_registry.py 与 /rag/command* 四端点已下线删除，本脚本依赖
+「符号链接 + import CommandRegistry 复用业务解析逻辑」的前提不再成立。
+**请改用同目录的 command_registry.py**（自包含解析 + --apply 落盘 + --get/--search 查询）。
+
 为什么需要它
 ------------
 backend/app/rag/command_registry.py 的逻辑是「先读缓存、缺失才回源」：
